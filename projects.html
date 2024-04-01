@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="./stylesheet.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background: url(./blur\ background\ 1.png);
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h1 {
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .box a {
+            text-decoration: none;
+            color: white;
+        }
+
+        h3 {
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .projects-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .projects-grid {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .project {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .project:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .project img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .document-link {
+            color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="./index.html" class="logo">Nandini.S</a>
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./projects.html">Projects</a>
+            <a href="./experience.html">Experience</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+    </header>
+    <h1>Projects</h1> <br>
+    <div class="container">
+        <div class="box" onclick="toggleProjects('dataAnalysis')">
+            <h3>Data Analysis Projects</h3>
+        </div>
+        <div class="box" onclick="toggleProjects('graphicDesign')">
+            <h3>Graphic Designing Projects</h3>
+        </div>
+        <div class="box" onclick="toggleProjects('webDesign')">
+            <h3>Web Designing Projects</h3>
+        </div>
+    </div>
+
+    <div id="dataAnalysisProjects" class="projects-grid">
+        <!-- Data Analysis Projects Grid -->
+        <div class="project">
+            <img src="./Madhav Ecommerce Sales Dashboard.png" alt="Data Analysis Project 1">
+            <div class="project-title">Data Analysis Project 1</div>
+            <a class="document-link" href="https://www.novypro.com/project/madhav-ecommerce-sales-dashboard-13" target="_blank">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="./Walmart Sales Dashboard.png" alt="Data Analysis Project 2">
+            <div class="project-title">Data Analysis Project 2</div>
+            <a class="document-link" href="https://www.novypro.com/project/wallmart-sales-dashboard" target="_blank">View Project</a>
+        </div>
+        <div class="project">
+            <img src="./HR Analytics Dashboard.png" alt="Data Analysis Project 3">
+            <div class="project-title">Data Analysis Project 3</div>
+            <a class="document-link" href="https://www.novypro.com/project/hr-analytics-dashboard-260" target="_blank">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="./Amazon Sales Dashboard.png" alt="Data Analysis Project 4">
+            <div class="project-title">Data Analysis Project 4</div>
+            <a class="document-link" href="https://www.novypro.com/project/amazon-sales-dashboard-13" target="_blank">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="./A1 Coorporation Dashboard.png" alt="Data Analysis Project 5">
+            <div class="project-title">Data Analysis Project 5</div>
+            <a class="document-link" href="https://www.novypro.com/project/a1-corporation-dashboard" target="_blank">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="./TechnoHacks_EduTech dashboard pic.png" alt="Data Analysis Project 6">
+            <div class="project-title">Data Analysis Project 6</div>
+            <a class="document-link" href="https://www.novypro.com/project/technohacks-edutech-internship-task" target="_blank">View Project</a>
+        </div>
+    </div>
+
+    <div id="graphicDesignProjects" class="projects-grid">
+        <!-- Graphic Design Projects Grid -->
+        <div class="project">
+            <img src="graphic_design_project1.jpg" alt="Graphic Design Project 1">
+            <div class="project-title">Graphic Design Project 1</div>
+            <a class="document-link" href="graphic_design_project1_document.pdf" target="_blank">View Document</a>
+        </div>
+
+        <div class="project">
+            <img src="graphic_design_project2.jpg" alt="Graphic Design Project 2">
+            <div class="project-title">Graphic Design Project 2</div>
+            <a class="document-link" href="graphic_design_project2_document.pdf" target="_blank">View Document</a>
+        </div>
+    </div>
+
+    <div id="webDesignProjects" class="projects-grid">
+        <!-- Web Design Projects Grid -->
+        <div class="project">
+            <img src="./ComIQ.png" alt="Web Design Project 1">
+            <div class="project-title">Web Design Project 1</div>
+            <a class="document-link" href="" target="_blank">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="web_design_project2.jpg" alt="Web Design Project 2">
+            <div class="project-title">Web Design Project 2</div>
+            <a class="document-link" href="web_design_project2_document.pdf" target="_blank">View Project</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleProjects(category) {
+            // Hide all projects grids
+            document.getElementById('dataAnalysisProjects').style.display = 'none';
+            document.getElementById('graphicDesignProjects').style.display = 'none';
+            document.getElementById('webDesignProjects').style.display = 'none';
+
+            // Show the selected projects grid
+            document.getElementById(category + 'Projects').style.display = 'grid';
+        }
+    </script>
+</body>
+
+</html>
