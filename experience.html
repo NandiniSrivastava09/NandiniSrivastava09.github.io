@@ -5,18 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience and Certificates</title>
     <link rel="stylesheet" href="./stylesheet.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        /* Updated Header Styles to Match Contact Page */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                padding: 1rem 5%;
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                transition: 0.3s;
+            }
+
+            .navbar.active {
+                left: 0;
+            }
+        }
+
+        /* Existing Experience/Certificate Styles */
         body {
             background: url(./blur\ background\ 1.png);
             background-size: cover;
-            background-position: center;
             color: white;
             font-family: 'Times New Roman', Times, serif;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            padding: 70px 5% 0;
+            min-height: 100vh;
         }
-        
+
         h1 {
             padding: 20px;
             text-align: center;
@@ -58,20 +135,28 @@
             height: auto;
             margin-bottom: 10px;
         }
+
+        @media (max-width: 480px) {
+            .certificate img {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <a href="./index.html" class="logo">Nandini.S</a>
+        <i class='bx bx-menu menu-btn'></i>
         <nav class="navbar">
             <a href="./index.html">Home</a>
             <a href="./about.html">About</a>
             <a href="./projects.html">Projects</a>
-            <a href="./experience.html">Experience</a>
+            <a href="./experience.html">Experience & Certificates</a>
             <a href="./contact.html">Contact</a>
         </nav>
     </header>
-    <h1>Experience and Certificates</h1>
+
+    <h1>Experience & Certificates</h1>
 
     <section class="certificates">
         
@@ -203,5 +288,28 @@
         </div>
     </section>
 
+    <script>
+        // Updated to Match Contact Page's Menu Script
+        const menuBtn = document.querySelector('.menu-btn');
+        const navbar = document.querySelector('.navbar');
+
+        menuBtn.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && !menuBtn.contains(e.target)) {
+                navbar.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

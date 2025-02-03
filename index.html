@@ -1,49 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./stylesheet.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <style>
+    /* ========== Base Styles ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      color: white;
+      font-family: Arial, sans-serif;
+      background: url(./blur\ background\ 2.png);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* ========== Header Styles ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .navbar {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+    }
+    
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      bottom: -5px;
+      left: 0;
+      transition: 0.3s;
+    }
+    
+    .navbar a:hover::after {
+      width: 100%;
+    }
+    
+    .menu-btn {
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      display: none;
+    }
+    
+    /* ========== Home Section Styles ========== */
+    .home {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      padding: 120px 5% 40px;
+      color: white;
+      text-align: center;
+    }
+    
+    .home-content {
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    
+    .home-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .home-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .home-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .home-sci {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .home-sci a {
+      width: 40px;
+      height: 40px;
+      border: 2px solid aqua;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: aqua;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    .home-sci a:hover {
+      background: aqua;
+      color: #081b29;
+      box-shadow: 0 0 20px aqua;
+    }
+    
+    .btn-box {
+      display: inline-block;
+      padding: 12px 28px;
+      background: aqua;
+      border-radius: 40px;
+      font-size: 1rem;
+      color: #081b29;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    
+    .btn-box:hover {
+      box-shadow: 0 0 20px aqua;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .glowing-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 50%;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    /* ========== Breakpoints Adjustments ========== */
+    
+    /* For large screens (1440px and up) */
+    @media (min-width: 1440px) {
+      .home {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+      .home-content {
+        margin-bottom: 0;
+      }
+      .glowing-image {
+        max-width: 600px;
+      }
+    }
+    
+    /* Tablet view (up to 768px) */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+      .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 5%;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        transition: 0.3s;
+      }
+      .navbar.active {
+        left: 0;
+      }
+      .home {
+        padding: 100px 5% 40px;
+      }
+      .glowing-image {
+        max-width: 300px;
+      }
+      .home-content h1 {
+        font-size: 2.5rem;
+      }
+      .home-content h3 {
+        font-size: 1.3rem;
+      }
+    }
+    
+    /* For devices up to 425px */
+    @media (max-width: 425px) {
+      .glowing-image {
+        max-width: 250px;
+      }
+      .home-content h1 {
+        font-size: 2rem;
+      }
+      .home-content h3 {
+        font-size: 1.2rem;
+      }
+      .home-content p {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 375px) {
+    .glowing-image {
+        max-width: 100px; /* Reduced the maximum width of the image */
+        margin: 20px auto; /* Center the image with vertical spacing */
+    }
+    
+    .home-content {
+        text-align: center;
+        margin: 0 auto; /* Center the content */
+    }
+    
+    .home-content h1 {
+        font-size: 1.8rem;
+    }
+  
+    .home-content h3 {
+        font-size: 1.1rem;
+    }
+  
+    .home-content p {
+        font-size: 0.95rem;
+    }
+  
+    .btn-box {
+        display: inline-block;
+        margin-top: 6px;
+    }
+    }
+
+    
+    @media (max-width: 320px) {
+      .glowing-image {
+        max-width: 170px;
+      }
+      .home-content h1 {
+        font-size: 1.6rem;
+      }
+      .home-content h3 {
+        font-size: 1rem;
+      }
+      .home-content p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo">Nandini.S</a>
-
-        <nav class="navbar">
-            <a href="#">Home </a>
-            <a href="./about.html">About </a>
-            <a href="./projects.html">Projects</a>
-            <a href="./experience.html">Experience</a>
-            <a href="./contact.html">Contact</a>
-            </a>
-        </nav>
+      <a href="#" class="logo">Nandini.S</a>
+      <i class='bx bx-menu menu-btn'></i>
+      <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./experience.html">Experience & Certificates</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
     </header>
+    
     <section class="home">
-        <!-- <div class="loader"></div> (loader code)-->
-        
-        <div class="home-content">
-            <h3>Hello, it's me</h3>
-            <h1>Nandini Srivastava</h1>
-            <h3>And I'm <span class="text"></span></h3>
-            <p>I'm a Graphic Designer with over 1.5 years of experience.</p>
-            <div class="home-sci">
-                <a href="https://www.linkedin.com/in/nandini-srivastava-87b815212/" target="_blank"><i class='bx bxl-linkedin-square' ></i></a>
-                <a href="mailto:nandinisriva20@gmail.com" target="_blank"><i class='bx bxl-gmail'></i></a>
-                <a href="https://github.com/NandiniSrivastava09" target="_blank"><i class='bx bxl-github'></i></a>
-                <a href="https://twitter.com/nandini_9jan" target="_blank"><i class='bx bxl-twitter' ></i></a>
-                <!-- <a href="https://wa.me/7668570305" target="_blank"<i class='bx bxl-whatsapp-square' ></i></a>
-                <a href="https://www.instagram.com/_nandini_019_/" target="_blank"><i class='bx bxl-instagram' ></i></a>
-                <a href="https://www.snapchat.com/add/nandini_sriva20?share_id=jNijYy5bABI&locale=en-GB" target="_blank"><i class='bx bxl-snapchat'></i></a>                -->
-            </div>
-            <a href="./Nandini Resume.docx" download class="btn-box">Download my CV</a>
+      <div class="home-content">
+        <h3>Hello, it's me</h3>
+        <h1>Nandini Srivastava</h1>
+        <h3>And I'm <span class="text"></span></h3>
+        <p>I'm a Graphic Designer with over 1.5 years of experience.</p>
+        <div class="home-sci">
+          <a href="https://www.linkedin.com/in/nandini-srivastava-87b815212/" target="_blank">
+            <i class='bx bxl-linkedin-square'></i>
+          </a>
+          <a href="mailto:nandinisriva20@gmail.com" target="_blank">
+            <i class='bx bxl-gmail'></i>
+          </a>
+          <a href="https://github.com/NandiniSrivastava09" target="_blank">
+            <i class='bx bxl-github'></i>
+          </a>
+          <a href="https://twitter.com/nandini_9jan" target="_blank">
+            <i class='bx bxl-twitter'></i>
+          </a>
         </div>
-        <aside class="glowing-image">
-            <img src="./my pic.png" alt="My Picture">
-        </aside>
+        <a href="./Nandini Resume.docx" download class="btn-box">Download Resume</a>
+      </div>
+      <div class="image-container">
+        <img src="./my pic.png" alt="My Picture" class="glowing-image">
+      </div>
     </section>
-    <script src="./main.js"></script>
-</body>
+    
+  
+    <script>
+      // Hamburger Menu Script
+      const menuBtn = document.querySelector('.menu-btn');
+      const navbar = document.querySelector('.navbar');
+  
+      menuBtn.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+      });
+  
+      document.addEventListener('click', (e) => {
+        if (!navbar.contains(e.target) && !menuBtn.contains(e.target)) {
+          navbar.classList.remove('active');
+        }
+      });
+  
+      document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+          navbar.classList.remove('active');
+        });
+      });
+  
+      // Typed.js Initialization
+      var typed = new Typed('.text', {
+        strings: ['a Graphic Designer', 'a Web Developer', 'a Data Analyst'],
+        typeSpeed: 100,
+        backSpeed: 100,
+        backDelay: 1000,
+        loop: true
+      });
+    </script>
+  </body>
 </html>
